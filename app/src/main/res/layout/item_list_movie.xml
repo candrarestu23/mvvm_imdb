@@ -33,17 +33,31 @@
                     android:layout_height="260dp"
                     android:scaleType="centerCrop"
                     android:imageUrl='@{"http://image.tmdb.org/t/p/w500" + data.posterPath}'/>
-                <TextView
-                    android:id="@+id/tvRate"
-                    style="@style/list_rate"
+                <LinearLayout
+                    android:id="@+id/llVote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:maxLines="2"
-                    tools:text="17 Feb"
                     android:layout_below="@id/acara_bgimg"
-                    android:text='@{String.valueOf(data.voteAvarage)}' />
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_rate"/>
+
+                    <TextView
+                        android:id="@+id/tvRate"
+                        style="@style/list_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:maxLines="2"
+                        android:text='@{String.valueOf(data.voteAvarage)}'
+                        tools:text="10" />
+                </LinearLayout>
                 <TextView
                     android:id="@+id/tvTitle"
                     style="@style/List_title"
@@ -56,22 +70,35 @@
                     android:maxLines="2"
                     android:textStyle="bold"
                     tools:text="Acara Workshop"
-                    android:layout_below="@id/tvRate"
+                    android:layout_below="@id/llVote"
                     android:text="@{data.title}" />
 
-                <TextView
-                    android:id="@+id/tvVote"
-                    style="@style/List_title"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Bandung"
-                    android:textSize="12sp"
-                    android:text='@{String.valueOf(data.voteCount)}'
-                    android:letterSpacing="0.1"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_voter"/>
+                    <TextView
+                        android:id="@+id/tvVote"
+                        style="@style/List_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Bandung"
+                        android:textSize="12sp"
+                        android:text='@{String.valueOf(data.voteCount)}'
+                        android:letterSpacing="0.1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
