@@ -24,7 +24,7 @@ class DetailMovieModel (
     val posterPath: String?,
 
     @SerializedName("release_date")
-    val releaseData: String?,
+    val releaseDate: String?,
 
     val runtime: Int?,
     val status: String?,

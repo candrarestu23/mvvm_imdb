@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
+
+    <data>
+        <variable
+            name="data"
+            type="com.candra.myapplication.data.model.DetailMovieModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,7 +27,8 @@
                     android:id="@+id/yt_player"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
-                    app:showFullScreenButton="true"/>
+                    app:showFullScreenButton="true"
+                    app:videoId="@{data.videos.results[0].key}"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,17 +44,19 @@
                             style="@style/detail_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Parasite"/>
+                            tools:text="Parasite"
+                            android:text="@{data.originalTitle}"/>
 
                         <TextView
                             style="@style/detail_year"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
-                            tools:text="(2019)"/>
+                            tools:text="@{'('+data.releaseDate+')'}"/>
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tvMovieInfo"
                         style="@style/detail_title_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,13 +79,15 @@
                         android:layout_height="170dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginStart="12dp"
-                        android:src="@color/md_black_1000"/>
+                        android:src="@color/md_black_1000"
+                        android:imageUrl='@{"http://image.tmdb.org/t/p/w500" + data.posterPath}'/>
                     <TextView
                         style="@style/detail_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="@tools:sample/lorem/random"
-                        android:layout_margin="12dp"/>
+                        android:layout_margin="12dp"
+                        android:text="@{data.overview}"/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -115,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="24dp"
-                        tools:text= "99"/>
+                        tools:text= "80"/>
                     <TextView
                         style="@style/detail_desc"
                         android:layout_width="wrap_content"
@@ -132,6 +144,13 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:visibility="gone"/>
+            <TextView
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:text="Connection Error"/>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

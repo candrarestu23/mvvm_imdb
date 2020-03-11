@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.listNewestWorkshop.observe(this, Observer {
+        viewModel.listMovie.observe(this, Observer {
             it?.let {
                 mList.clear()
                 mList.addAll(it)

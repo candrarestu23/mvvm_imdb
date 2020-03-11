@@ -21,7 +21,7 @@ class ListMovieViewModel(application: Application): BaseViewModel(application) {
     private var refreshTime = AppUtils.getRefreshTime()
 
     val stateRequest = MutableLiveData<RequestState>().apply { value = RequestState.STATE_IDLE }
-    val listNewestWorkshop = MutableLiveData<List<ListMovieModel>>()
+    val listMovie = MutableLiveData<List<ListMovieModel>>()
 
     private val disposable = CompositeDisposable()
 
@@ -83,7 +83,7 @@ class ListMovieViewModel(application: Application): BaseViewModel(application) {
 //    }
 
     private fun setList(list: List<ListMovieModel>){
-        listNewestWorkshop.value = list
+        listMovie.value = list
         stateRequest.postValue(RequestState.STATE_SUCCESS)
     }
 
