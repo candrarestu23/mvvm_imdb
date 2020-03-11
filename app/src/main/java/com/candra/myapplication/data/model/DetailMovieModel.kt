@@ -40,14 +40,14 @@ class DetailMovieModel (
 
 class GenresModel(
     val id: Int?,
-    val name: Int?
+    val name: String?
 )
 
 class VideoParentModel(
     val results: List<VideosModel>?
 )
 class VideosModel(
-    val id: Int?,
+    val id: String?,
     val key: String?,
     val name: String?
 )

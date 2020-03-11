@@ -10,12 +10,12 @@
     </data>
 
     <LinearLayout
-        android:id="@+id/llItemWorkshop"
+        android:id="@+id/llItem"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:orientation="vertical">
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/vh_newest"
+            android:id="@+id/cvContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"

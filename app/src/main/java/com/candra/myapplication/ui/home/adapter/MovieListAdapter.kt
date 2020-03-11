@@ -1,11 +1,14 @@
 package com.candra.myapplication.ui.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.ViewGroup
 import com.candra.myapplication.R
 import com.candra.myapplication.base.BaseRecyclerAdapter
 import com.candra.myapplication.data.model.ListMovieModel
 import com.candra.myapplication.databinding.ItemListMovieBinding
+import com.candra.myapplication.ui.detail.activity.DetailMovieActivity
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MovieListAdapter(
     context: Context?,
@@ -25,13 +28,14 @@ class MovieListAdapter(
         override fun onBind(model: ListMovieModel) {
             view.data = model
 
-//            view.llItemWorkshop.onClick {
-//                context?.let{
-//                    val intent = Intent(context, WorkshopDetailActivity::class.java)
-//                    intent.putExtra("id", model.id)
-//                    it.startActivity(intent)
-//                }
-//            }
+            view.cvContent.onClick {
+                context?.let{
+                    val intent = Intent(context, DetailMovieActivity::class.java)
+                    intent.putExtra("movieID", model.ID)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    it.startActivity(intent)
+                }
+            }
         }
     }
 }

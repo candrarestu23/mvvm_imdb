@@ -4,6 +4,7 @@ import com.candra.myapplication.base.ResponseArray
 import com.candra.myapplication.data.model.DetailMovieModel
 import com.candra.myapplication.data.model.ListMovieModel
 import io.reactivex.Single
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

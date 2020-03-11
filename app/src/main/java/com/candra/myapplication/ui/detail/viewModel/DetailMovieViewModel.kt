@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.candra.myapplication.base.BaseViewModel
 import com.candra.myapplication.data.model.DetailMovieModel
+import com.candra.myapplication.data.model.GenresModel
 import com.candra.myapplication.data.model.RequestState
 import com.candra.myapplication.utils.AppUtils
 import com.candra.myapplication.utils.SharedPreferenceHelper
@@ -22,6 +23,7 @@ class DetailMovieViewModel(application: Application): BaseViewModel(application)
 
     val stateRequest = MutableLiveData<RequestState>().apply { value = RequestState.STATE_IDLE }
     val movieData = MutableLiveData<DetailMovieModel>()
+    val genreList = MutableLiveData<String>()
 
     private val disposable = CompositeDisposable()
 
@@ -48,6 +50,7 @@ class DetailMovieViewModel(application: Application): BaseViewModel(application)
                             setData(it)
                         }
                     }
+
                 })
         )
     }
@@ -55,7 +58,16 @@ class DetailMovieViewModel(application: Application): BaseViewModel(application)
 
     private fun setData(data: DetailMovieModel){
         movieData.value = data
+        getGenreList(data.genres)
         stateRequest.postValue(RequestState.STATE_SUCCESS)
+    }
+
+    private fun getGenreList(data: List<GenresModel>){
+        var tempData = ""
+        for (i in data){
+            i.name?.let { tempData += i.name + "," }
+        }
+        genreList.value = tempData
     }
 
     override fun onCleared() {

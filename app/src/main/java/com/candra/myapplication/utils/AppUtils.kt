@@ -125,5 +125,6 @@ object AppUtils {
 
     fun getRefreshTime(): Long{
         return 10 * 60 * 1000 * 1000 * 1000L //10 minute in Nano second
+
     }
 }

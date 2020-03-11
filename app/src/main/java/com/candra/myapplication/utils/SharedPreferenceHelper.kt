@@ -7,10 +7,7 @@ import androidx.preference.PreferenceManager
 
 class SharedPreferenceHelper {
     companion object{
-        private const val PREF_PROFILE = "Pref time"
-        private const val PREF_GALLERY = "Pref Gallery"
-        private const val PREF_PORTOFOLIO = "Pref Portofolio"
-        private const val PREF_WORKSHOP = "Pref Workshop"
+        private const val PREF_LIST = "Pref List"
         private var prefs: SharedPreferences? = null
 
         @Volatile private var instance: SharedPreferenceHelper? = null
@@ -32,37 +29,14 @@ class SharedPreferenceHelper {
         }
     }
 
-    fun saveUpdateTime(time: Long) {
+
+    fun saveListTime(time: Long){
         prefs?.edit(commit = true){
-            putLong(PREF_PROFILE, time)
+            putLong(PREF_LIST, time)
         }
     }
 
-    fun saveGalleryTime(time: Long) {
-        prefs?.edit(commit = true){
-            putLong(PREF_GALLERY, time)
-        }
-    }
-
-    fun savePortofolioTime(time: Long) {
-        prefs?.edit(commit = true){
-            putLong(PREF_PORTOFOLIO, time)
-        }
-    }
-
-    fun saveWorkshopTime(time: Long){
-        prefs?.edit(commit = true){
-            putLong(PREF_WORKSHOP, time)
-        }
-    }
-
-    fun getUpdateTime() = prefs?.getLong(PREF_PROFILE, 0)
-
-    fun getGalleryTime() = prefs?.getLong(PREF_GALLERY, 0)
-
-    fun getPortofolioTime() = prefs?.getLong(PREF_PORTOFOLIO, 0)
-
-    fun getWorkshopTime() = prefs?.getLong(PREF_WORKSHOP, 0)
+    fun getMovieTime() = prefs?.getLong(PREF_LIST, 0)
 
     fun getChacheDuration() = prefs?.getString("pref_cache_duration", "")
 }

@@ -12,7 +12,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,11 +25,10 @@
                 android:orientation="vertical">
 
                 <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                    android:id="@+id/yt_player"
+                    android:id="@+id/ytPlayer"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
-                    app:showFullScreenButton="true"
-                    app:videoId="@{data.videos.results[0].key}"/>
+                    app:showFullScreenButton="true"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,6 +79,7 @@
                         android:layout_height="170dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginStart="12dp"
+                        android:layout_marginBottom="12dp"
                         android:src="@color/md_black_1000"
                         android:imageUrl='@{"http://image.tmdb.org/t/p/w500" + data.posterPath}'/>
                     <TextView
@@ -113,11 +114,13 @@
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
                             android:textStyle="bold"
+                            android:text='@{data.voteAvarage + "/ 10"}'
                             tools:text="8.6/10"/>
                         <TextView
                             style="@style/detail_year"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(data.voteCount)}"
                             tools:text="304,643"/>
                     </LinearLayout>
 
@@ -127,14 +130,14 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="24dp"
-                        tools:text= "80"/>
+                        android:text= "80"/>
                     <TextView
                         style="@style/detail_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="8dp"
-                        tools:text="Metascore"/>
+                        android:text="Metascore"/>
                 </LinearLayout>
             </LinearLayout>
 
