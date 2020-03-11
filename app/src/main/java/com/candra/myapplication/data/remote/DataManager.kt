@@ -1,12 +1,10 @@
 package com.candra.myapplication.data.remote
 
 import com.candra.myapplication.base.ResponseArray
+import com.candra.myapplication.data.model.DetailMovieModel
 import com.candra.myapplication.data.model.ListMovieModel
 import com.candra.myapplication.utils.Constant
 import io.reactivex.Single
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 
 class DataManager (private val apiService: ApiServices) {
 
@@ -17,4 +15,7 @@ class DataManager (private val apiService: ApiServices) {
         return apiService.getListMovie(Constant.API_KEY_V3, Constant.LANG_US, Constant.SORT_DESC, false, includeVideo, page)
     }
 
+    fun getMovieDetail(movieID: Int):Single<DetailMovieModel>{
+        return apiService.getDetailMovie(movieID, Constant.API_KEY_V3, Constant.LANG_US, "videos")
+    }
 }
